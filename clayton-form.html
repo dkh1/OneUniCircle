@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Two Twelve Clayton</title>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css"> <!-- mailchimp default form CSS -->
+    <link rel="stylesheet" href="css/clayton.css"> <!-- custom CSS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                // jQuery Validation
+                $("#signup").validate({
+                    // if valid, post data via AJAX
+                    submitHandler: function(form) {
+                        $.post("subscribe.php", { fname: $("#fname").val(), lname: $("#lname").val(), email: $("#email").val() }, tel: $("#tel").val(), function(data) {
+                            $('#response').html(data);
+                        });
+                    },
+                    // all fields are required
+                    rules: {
+                        fname: {
+                            required: true
+                        },
+                        lname: {
+                            required: true
+                        },
+                        email: {
+                            required: true,
+                            email: true
+                        }
+                        tel: {
+                            required: true,
+                            tel: true
+                        }
+                    }
+                });
+            });
+        </script>
+    </head>
+  <body id="claytonformbody">
+    <div id="wrapper">
+            <form id="signup" class="formee" action="subscribe.php" method="post">
+                <fieldset>
+                    <legend>Sign Up</legend>
+                    <div>
+                        <label for="fname">First Name *</label> <input name="fname" id="fname" type="text" />
+                    </div>
+                    <div>
+                        <label for="lname">Last Name *</label> <input name="lname" id="lname" type="text" />
+                    </div>
+                    <div>
+                        <label for="email">Email Address *</label> <input name="email" id="email" type="email" />
+                    </div>
+                    <div>
+                        <label for="tel">Phone Number *</label> <input name="tel" id="tel" type="tel" />
+                    </div>
+                    <div>
+                        <input class="right inputnew" type="submit" title="Send" value="Send" />
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/clayton.js"></script>
+  </body>
+</html>

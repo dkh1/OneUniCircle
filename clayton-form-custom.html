@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Two Twelve Clayton</title>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css"> <!-- mailchimp default form CSS -->
+    <link rel="stylesheet" href="css/clayton.css"> <!-- custom CSS -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
+        <!-- Added by David -->
+        <script>
+        function validate(){
+            //form validation
+            var fname=document.getElementById('fname');
+            var lname=document.getElementById('lname');
+            var email=document.getElementById('email');
+            var tel=document.getElementById('tel');
+             if (fname.value == null || fname.value=="First Name"){
+               fname.style.backgroundColor="#b5b3cd";
+             }
+             if (lname.value == null || lname.value=="Last Name"){
+               lname.style.backgroundColor="#b5b3cd";
+             }
+             if (email.value == null || email.value=="Email Address"){
+               email.style.backgroundColor="#b5b3cd";
+             }
+             if (tel.value == null || tel.value=="Phone Number"){
+               tel.style.backgroundColor="#b5b3cd";
+             }
+          }
+        </script>
+
+        <!-- End Added by David -->
+
+        <!-- Default Script
+        <script type="text/javascript">
+            $(document).ready(function() {
+                // jQuery Validation
+                $("#signup").validate({
+                    // if valid, post data via AJAX
+                    submitHandler: function(form) {
+                        $.post("subscribe.php", { fname: $("#fname").val(), lname: $("#lname").val(), email: $("#email").val() }, tel: $("#tel").val(), function(data) {
+                            $('#response').html(data);
+                        });
+                    },
+                    // all fields are required
+                    rules: {
+                        fname: {
+                            required: true
+                        },
+                        lname: {
+                            required: true
+                        },
+                        email: {
+                            required: true,
+                            email: true
+                        }
+                        tel: {
+                            required: true,
+                            tel: true
+                        }
+                    }
+                });
+            });
+        </script> -->
+
+    </head>
+  <body id="claytonformbody">
+    <div id="wrapper">
+            <form id="signup" name="signup" class="formee" action="subscribe.php" method="post">
+                <div class="row">
+                        <input name="fname" id="fname" type="text" value="First Name" class="autoclear required input text" />
+                        <input name="lname" id="lname" type="text" value="Last Name" class="autoclear required input text" />
+                </div>
+                <div class="row">
+                        <input name="email" id="email" type="email" value="Email Address" class="autoclear required input text email" />
+                        <input name="tel" id="tel" type="tel" value="Phone Number" class="autoclear input text tel" />
+                </div>
+                    <div>
+                        <input type="submit" title="Send" value="Subscribe" name="Subscribe" onclick="return validate()" class="input button" />
+                    </div>
+            </form>
+        </div>
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/clayton.js"></script>
+  </body>
+</html>
